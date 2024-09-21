@@ -52,7 +52,7 @@ export const ImagesList = ({ albumId, albumName, onBack }) => {
 
   useEffect(() => {
     getImages();
-  }, []);
+  }, [getImages]);
 
   const [addImageIntent, setAddImageIntent] = useState(false);
   const [imgLoading, setImgLoading] = useState(false);
@@ -234,9 +234,8 @@ export const ImagesList = ({ albumId, albumName, onBack }) => {
               onClick={() => setActiveImageIndex(i)}
             >
               <div
-                className={`${styles.update} ${
-                  activeHoverImageIndex === i && styles.active
-                }`}
+                className={`${styles.update} ${activeHoverImageIndex === i && styles.active
+                  }`}
                 onClick={(e) => {
                   e.stopPropagation();
                   setUpdateImageIntent(image);
@@ -245,9 +244,8 @@ export const ImagesList = ({ albumId, albumName, onBack }) => {
                 <img src="/assets/edit.png" alt="update" />
               </div>
               <div
-                className={`${styles.delete} ${
-                  activeHoverImageIndex === i && styles.active
-                }`}
+                className={`${styles.delete} ${activeHoverImageIndex === i && styles.active
+                  }`}
                 onClick={(e) => handleDelete(e, image.id)}
               >
                 <img src="/assets/trash-bin.png" alt="delete" />
