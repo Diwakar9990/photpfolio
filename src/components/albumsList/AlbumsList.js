@@ -14,7 +14,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { db } from "../../firebase";
-import { doc} from "firebase/firestore";
+import { doc } from "firebase/firestore";
 // components imports
 import { AlbumForm } from "../albumForm/AlbumForm";
 import { ImagesList } from "../imagesList/ImagesList";
@@ -25,7 +25,7 @@ import { ImagesList } from "../imagesList/ImagesList";
 export const AlbumsList = () => {
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(false);
- 
+
   const [albumAddLoading, setAlbumAddLoading] = useState(false);
   const getAlbums = async () => {
     setLoading(true);
@@ -34,7 +34,7 @@ export const AlbumsList = () => {
       query(albumsRef, orderBy("created", "desc"))
     );
 
-    const albumsData = albumsSnapshot.docs.map((doc) =>({
+    const albumsData = albumsSnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     }));
@@ -44,11 +44,11 @@ export const AlbumsList = () => {
     setLoading(false);
     // deleteentry();
   };
-  const deleteentry = async (id) => { 
-      await deleteDoc(doc(db, "albums", `${id}`));
-  }
+  // const deleteentry = async (id) => { 
+  //     await deleteDoc(doc(db, "albums", `${id}`));
+  // }
 
-  
+
   useEffect(() => {
     getAlbums();
   }, []);
